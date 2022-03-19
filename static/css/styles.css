@@ -13,8 +13,8 @@
 }
 
 .line-in-search {
-  background-color: transparent;
-  color: #e3f2fd;
+  background-color: transparent !important;
+  color: #e3f2fd !important;
   outline: none;
   outline-style: none;
   border-top: none;
