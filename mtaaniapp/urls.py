@@ -7,6 +7,7 @@ urlpatterns = [
     path('register/',views.register,name='register'),
     path('', include('django.contrib.auth.urls')),
     path('',views.index, name='index'),
+    path('logoutuser',views.logoutuser, name='logoutuser'),
 ]
 
 if settings.DEBUG:
