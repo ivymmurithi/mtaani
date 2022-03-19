@@ -14,7 +14,7 @@
 
 .line-in-search {
   background-color: transparent;
-  color: #eeeeee;
+  color: #e3f2fd;
   outline: none;
   outline-style: none;
   border-top: none;
@@ -22,4 +22,10 @@
   border-right: none;
   border-bottom: solid black 1px;
   padding: 3px 10px;
+}
+
+.carouselExampleIndicators, .carousel-inner {
+  background-size: contain !important;
+  background-repeat: no-repeat !important;
+  background-position: center center !important;
 }
