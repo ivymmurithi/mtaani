@@ -4,13 +4,31 @@
 {% block content %}
 
 {% for profile in profiles %}
-    <div class="card">
+    <!-- <div class="card">
         <div class="card-header">
             Mtaani
         </div>
         <div class="card-body">
             <h5 class="card-title"><strong>Username:</strong>{{profile.user.username}}</h5>
             <p class="card-text"><strong>Email:</strong>{{profile.user.email}}</p>
+        </div>
+    </div> -->
+
+    <div class="container profile-container text-center">
+        <div class="grid-photos container">
+            <div class="row">
+                <div class="col-md-5 grid-image mt-5">
+                    <img src="../../media/images/grid1.jpg" alt="" style="max-height: 180px; max-width: 180px;">
+                    <img src="../../media/images/grid2.jpg" alt="" style="max-height: 180px; max-width: 180px;">
+                    <img src="../../media/images/grid3.jpg" alt="" style="max-height: 180px; max-width: 180px;">
+                    <img src="../../media/images/grid4.jpg" alt="" style="max-height: 180px; max-width: 180px;">
+                </div>
+
+                <div class="profile-details">
+                    <p>{{profile.user.username}}</p>
+                    <p>{{profile.user.email}}</p>
+                </div>
+            </div>
         </div>
     </div>
 {% endfor %}
