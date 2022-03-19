@@ -1,0 +1,25 @@
+.mtaani-brand {
+  font-family: "Satisfy", cursive;
+}
+
+.navbar {
+  font-family: "Satisfy", cursive;
+}
+
+.navbar-nav > li {
+  margin-left: 30px;
+  margin-right: 30px;
+  font-size: 1.2rem !important;
+}
+
+.line-in-search {
+  background-color: transparent;
+  color: #eeeeee;
+  outline: none;
+  outline-style: none;
+  border-top: none;
+  border-left: none;
+  border-right: none;
+  border-bottom: solid black 1px;
+  padding: 3px 10px;
+}
