@@ -9,6 +9,7 @@ urlpatterns = [
     path('',views.index, name='index'),
     path('logoutuser',views.logoutuser, name='logoutuser'),
     path('profile',views.profile, name='profile'),
+    path('posts',views.posts, name='posts'),
 ]
 
 if settings.DEBUG:

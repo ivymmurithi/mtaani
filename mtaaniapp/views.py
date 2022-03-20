@@ -25,6 +25,11 @@ def profile(request):
     return render(request, 'profile.html',{'profiles':profile_object})
 
 @login_required
+def posts(request):
+    post_object = Post.objects.all()
+    return render(request, 'posts.html',{'posts':post_object})
+
+@login_required
 def logoutuser(request):
     logout(request)
     return redirect('login')
