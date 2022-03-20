@@ -27,18 +27,19 @@ def profile(request):
 @login_required
 def posts(request):
     if request.method == 'POST':
-        username  = request.user.get_username()           
         post_form = PostForm(request.POST,request.FILES)
         if post_form.is_valid():
-            post_form.save()
+            post_form.cleaned_data['user_id'] = request.session['_auth_user_id']
+            userposted = post_form.save()
+            userposted.profile_user_id = request.session['_auth_user_id']
+            userposted.save()
             return redirect('/posts/')
         else:
             post_form=PostForm()
     else:
-        username  = request.user.get_username() 
-        post_form = PostForm
+        post_form = PostForm()
         post_object = Post.objects.all()
-    return render(request, 'posts.html',{'posts':post_object, 'post_form':post_form,'username':username})
+    return render(request, 'posts.html',{'posts':post_object, 'post_form':post_form})
 
 @login_required
 def business(request):
