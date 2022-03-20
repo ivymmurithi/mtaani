@@ -14,7 +14,8 @@
                         <img class="postcard__img" src="{{post.post_image.url}}" alt="Image Title" />
                     </a>
                     <div class="postcard__text t-dark">
-                        <h1 class="postcard__title blue"><a href="#">{{post.profile_user.username}}</a></h1>
+                        <h1 class="postcard__title blue"><a href="#">{{post.profile_user.user.username}}</a></h1>
+                        <h5 class="preview-txt blue"><a href="#">{{post.neighbourhood.mtaani_name}}</a></h5>
                         <div class="postcard__subtitle small">
                             <time datetime="2020-05-25 12:00:00">
                                 <i class="fas fa-calendar-alt mr-2"></i>Mon, May 25th 2020
@@ -26,5 +27,5 @@
                 </article>
     {% endfor %}
 
-    
+
 {% endblock %}
