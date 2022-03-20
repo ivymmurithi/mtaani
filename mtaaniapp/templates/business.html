@@ -3,4 +3,53 @@
 {% load crispy_forms_tags %}
 
 {% block content %}
+
+<style>
+
+    body {
+    background: #adb5bd;
+    background: #adb5bd;
+    min-height: 100vh;
+}
+
+.social-link {
+    width: 30px;
+    height: 30px;
+    border: 1px solid #ddd;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #666;
+    border-radius: 50%;
+    transition: all 0.3s;
+    font-size: 0.9rem;
+}
+
+.social-link:hover, .social-link:focus {
+    background: #ddd;
+    text-decoration: none;
+    color: #555;
+}
+
+</style>
+
+{% for business in businesses %}
+
+    <div class="container">
+            <div class="col-xl-8 col-sm-8 mb-5 mt-5">
+                <div class="bg-white rounded shadow-sm py-5 px-5">
+                <img src="../../media/images/sack-dollar-solid.svg" alt="" style="width: 6vw; align-items: center;"
+                    class="img-fluid rounded-circle mb-1 img-thumbnail shadow-sm">
+                    <span class="small text-uppercase business-name">{{business.business_name}}</span>
+                    <br>
+                    <span class="small text-uppercase text-muted business-description">{{business.business_description}}</span>
+                    <br>
+                    <span class="small text-uppercase  business-email">{{business.business_email}}</span>
+                    <br>
+                </div>
+            </div>
+    </div>
+
+{% endfor %}
+
 {% endblock %}

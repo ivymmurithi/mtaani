@@ -31,7 +31,8 @@ def posts(request):
 
 @login_required
 def business(request):
-    return render(request, 'business.html')
+    business_object = Business.objects.all()
+    return render(request, 'business.html', {'businesses':business_object})
 
 @login_required
 def logoutuser(request):
