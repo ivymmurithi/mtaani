@@ -1,5 +1,5 @@
 from django.shortcuts import redirect, render
-from .forms import RegisterForm
+from .forms import RegisterForm, PostForm
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth import logout
 from .models import *
@@ -26,8 +26,19 @@ def profile(request):
 
 @login_required
 def posts(request):
-    post_object = Post.objects.all()
-    return render(request, 'posts.html',{'posts':post_object})
+    if request.method == 'POST':
+        username  = request.user.get_username()           
+        post_form = PostForm(request.POST,request.FILES)
+        if post_form.is_valid():
+            post_form.save()
+            return redirect('/posts/')
+        else:
+            post_form=PostForm()
+    else:
+        username  = request.user.get_username() 
+        post_form = PostForm
+        post_object = Post.objects.all()
+    return render(request, 'posts.html',{'posts':post_object, 'post_form':post_form,'username':username})
 
 @login_required
 def business(request):
