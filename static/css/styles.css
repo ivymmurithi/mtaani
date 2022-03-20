@@ -1,7 +1,7 @@
 * {
-    padding: 0;
-    margin: 0;
-    box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
 }
 
 .mtaani-brand {
@@ -30,21 +30,29 @@
   padding: 3px 10px;
 }
 
-.carouselExampleIndicators, .carousel-inner {
+.carouselExampleIndicators,
+.carousel-inner {
   background-size: contain !important;
   background-repeat: no-repeat !important;
   background-position: center center !important;
 }
 
 .grid-image {
-    margin-right: 20%;
+  margin-right: 20%;
 }
 
 .profile-details {
-    float: right;
+  float: right;
+  margin-left: 50% !important;
+  margin-top: -20% !important;
 }
 
-.profile-details {
-    margin-left: 50% !important;
-    margin-top: -20% !important;
+.username {
+  font-size: 3vw;
+  font-family: "Playfair Display", serif;
+}
+
+.email {
+  font-size: 2vw;
+  font-family: "Playfair Display", serif;
 }

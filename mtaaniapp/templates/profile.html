@@ -4,16 +4,6 @@
 {% block content %}
 
 {% for profile in profiles %}
-    <!-- <div class="card">
-        <div class="card-header">
-            Mtaani
-        </div>
-        <div class="card-body">
-            <h5 class="card-title"><strong>Username:</strong>{{profile.user.username}}</h5>
-            <p class="card-text"><strong>Email:</strong>{{profile.user.email}}</p>
-        </div>
-    </div> -->
-
     <div class="container profile-container text-center">
         <div class="grid-photos container">
             <div class="row">
@@ -25,8 +15,8 @@
                 </div>
 
                 <div class="profile-details">
-                    <p>{{profile.user.username}}</p>
-                    <p>{{profile.user.email}}</p>
+                    <p class="username">{{profile.user.username}}</p>
+                    <p class="email">{{profile.user.email}}</p>
                 </div>
             </div>
         </div>
