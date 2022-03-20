@@ -30,6 +30,10 @@ def posts(request):
     return render(request, 'posts.html',{'posts':post_object})
 
 @login_required
+def business(request):
+    return render(request, 'business.html')
+
+@login_required
 def logoutuser(request):
     logout(request)
     return redirect('login')
