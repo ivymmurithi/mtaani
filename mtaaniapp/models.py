@@ -29,6 +29,7 @@ class Post(models.Model):
 
 class Business(models.Model):
     business_name = models.CharField(max_length=30, null=True)
+    business_description = models.TextField(null=True)
     business_email = models.EmailField(null=True)
     neighbourhood = models.ForeignKey(Neighbourhood,null=True, on_delete=models.CASCADE)
 
