@@ -11,6 +11,7 @@ urlpatterns = [
     path('profile/',views.profile, name='profile'),
     path('posts/',views.posts, name='posts'),
     path('business/',views.business, name='business'),
+    path('business_results/',views.business_results, name='business_results'),
 ]
 
 if settings.DEBUG:

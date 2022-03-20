@@ -3,6 +3,7 @@ from .forms import RegisterForm, PostForm
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth import logout
 from .models import *
+from django.contrib import messages
 
 # Create your views here.
 def register(request):
@@ -45,6 +46,17 @@ def posts(request):
 def business(request):
     business_object = Business.objects.all()
     return render(request, 'business.html', {'businesses':business_object})
+
+@login_required
+def business_results(request):
+    if request.method == 'POST':
+        if 'biz' in request.POST and request.POST['biz']:
+            searched_biz = request.POST['biz']
+            biz_objects = Business.objects.filter(neighbourhood__mtaani_name__icontains=searched_biz)
+            return render(request, 'bizsearch.html',{'businesses':biz_objects})
+        else:
+            messages.error(request, "Business does not exist!")
+    return render(request,'bizsearch.html')
 
 @login_required
 def logoutuser(request):
