@@ -4,6 +4,7 @@ from django.contrib.auth.decorators import login_required
 from django.contrib.auth import logout
 from .models import *
 from django.contrib import messages
+from django.contrib.postgres.search import SearchVector
 
 # Create your views here.
 def register(request):
@@ -54,23 +55,31 @@ def posts(request):
             post_form=PostForm()
     else:
         post_form = PostForm()
-        post_object = Post.objects.all()
+        current_user = request.user
+        profile = Profile.objects.get(user=current_user)
+        if profile.neighbourhood:
+            post_object = Post.objects.filter(neighbourhood=profile.neighbourhood)
+        else:
+            post_object = Post.objects.all()
     return render(request, 'posts.html',{'posts':post_object, 'post_form':post_form})
 
 @login_required
 def business(request):
-    business_object = Business.objects.all()
+    current_user = request.user
+    profile = Profile.objects.get(user=current_user)
+    if profile.neighbourhood:
+        business_object = Business.objects.filter(neighbourhood=profile.neighbourhood)
+    else:
+        business_object = Business.objects.all()
     return render(request, 'business.html', {'businesses':business_object})
 
 @login_required
 def business_results(request):
     if request.method == 'POST':
-        if 'biz' in request.POST and request.POST['biz']:
-            searched_biz = request.POST['biz']
-            biz_objects = Business.objects.filter(neighbourhood__mtaani_name__icontains=searched_biz)
-            return render(request, 'bizsearch.html',{'businesses':biz_objects})
-        else:
-            messages.error(request, "Business does not exist!")
+        search_vector = SearchVector("business_name") + SearchVector("business_description") + SearchVector("business_email")
+        search_term = request.POST['biz']
+        businesses = Business.objects.annotate(search=search_vector).filter(search=search_term)
+        return render(request,'bizsearch.html', {'businesses':businesses})
     return render(request,'bizsearch.html')
 
 @login_required
