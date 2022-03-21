@@ -12,6 +12,7 @@ urlpatterns = [
     path('posts/',views.posts, name='posts'),
     path('business/',views.business, name='business'),
     path('business_results/',views.business_results, name='business_results'),
+    path('profilemtaani/<int:profile_id>/',views.profilemtaani, name='profilemtaani'),
 ]
 
 if settings.DEBUG:

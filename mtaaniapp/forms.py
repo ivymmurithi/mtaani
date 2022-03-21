@@ -17,3 +17,12 @@ class PostForm(forms.ModelForm):
     class Meta:
         model = Post
         fields = ['post_image','post_name','post_description','neighbourhood']
+
+class MtaaniForm(forms.ModelForm):
+
+    class Meta:
+        model = Profile
+        fields = ['neighbourhood']
+        widgets = {
+            'Dropdown': forms.Select(attrs={'id':'choice'}),
+        }

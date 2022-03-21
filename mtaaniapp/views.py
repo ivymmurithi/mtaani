@@ -1,5 +1,5 @@
 from django.shortcuts import redirect, render
-from .forms import RegisterForm, PostForm
+from .forms import RegisterForm, PostForm, MtaaniForm
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth import logout
 from .models import *
@@ -23,7 +23,21 @@ def index(request):
 def profile(request):
     current_user = request.user
     profile_object = Profile.objects.all().filter(user=current_user.id)
-    return render(request, 'profile.html',{'profiles':profile_object})
+    mtaani_form = MtaaniForm()
+    return render(request, 'profile.html',{'profiles':profile_object,'mtaani_form':mtaani_form})
+
+def profilemtaani(request, profile_id):
+    if request.method == 'POST':
+        mtaani = Profile.objects.get(pk=profile_id)
+        mtaani_form = MtaaniForm(request.POST, instance=mtaani)
+        if mtaani_form.is_valid():
+            mtaani_form.save()
+            return redirect('/profile/',{'mtaani_form':mtaani_form})
+        else:
+            mtaani_form = MtaaniForm()
+    else:
+         mtaani_form = MtaaniForm()
+    return render(request, 'profile.html')
 
 @login_required
 def posts(request):

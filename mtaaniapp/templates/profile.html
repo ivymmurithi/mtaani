@@ -1,5 +1,6 @@
 {% extends 'base.html' %}
 {% load static %}
+{% load crispy_forms_tags %}
 
 {% block content %}
 
@@ -15,8 +16,15 @@
                 </div>
 
                 <div class="profile-details">
-                    <p class="username">{{profile.user.username}}</p>
-                    <p class="email">{{profile.user.email}}</p>
+                    <p class="username"><span class="defines">Username:</span>{{profile.user.username}}</p>
+                    <p class="email"><span class="defines">Email:</span>{{profile.user.email}}</p>
+                    <p class="email"><span class="defines">Neighbourhood:</span>{{profile.neighbourhood.mtaani_name}}</p>
+
+                    <form action="/profilemtaani/{{profile.id}}/" method="POST">
+                        {% csrf_token %}
+                        {{mtaani_form|crispy}}
+                        <button class="btn btn-outline-dark voteBtn" id="ProfileBtn{{project.id}}" type="submit">Choose Neighbourhood</button>
+                    </form>
                 </div>
             </div>
         </div>
