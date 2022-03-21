@@ -75,8 +75,9 @@
 #searchInput {
   color: black !important;
   align-items: center;
-  margin-left: 15%;
+  margin-left: 18%;
   width: 50%;
+  margin-top: 3%;
 }
 
 .defines {
