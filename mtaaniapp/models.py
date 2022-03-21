@@ -51,6 +51,7 @@ class Post(models.Model):
     post_description = models.TextField(null=True)
     profile_user = models.ForeignKey(Profile, null=True, on_delete=models.CASCADE)
     neighbourhood = models.ForeignKey(Neighbourhood, null=True, on_delete=models.CASCADE)
+    posted_date = models.DateField(null=True, auto_now_add=True)
 
     def __str__(self):
         return self.post_name
