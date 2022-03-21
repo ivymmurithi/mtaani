@@ -17,7 +17,8 @@ def register(request):
     return render(request, 'registration/register.html', {'register_form':register_form})
 
 def index(request):
-    return render(request, "index.html")
+    mtaani_objects = Neighbourhood.objects.all()
+    return render(request, "index.html", {'mtaanis':mtaani_objects})
 
 @login_required
 def profile(request):

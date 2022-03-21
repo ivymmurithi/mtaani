@@ -1,10 +1,13 @@
+from email.policy import default
 from django.db import models
 from django.contrib.auth.models import User
 
 # Create your models here.
 class Neighbourhood(models.Model):
+    mtaani_image = models.ImageField(upload_to = 'uploads/', null=True)
     mtaani_name = models.CharField(max_length=30, null=True)
     mtaani_location = models.CharField(max_length=30, null=True)
+    mtaani_description = models.TextField(default='Hallo', null=True)
     mtaani_occupants = models.PositiveIntegerField(null=True)
 
     def __str__(self):

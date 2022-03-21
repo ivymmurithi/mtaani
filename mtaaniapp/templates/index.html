@@ -36,4 +36,20 @@
         <span class="sr-only">Next</span>
     </a>
 </div>
+<br>
+
+<p class="liofmtaanis" id="listofmtaanis">List of Neighbourhoods</p>
+
+<section class="main-container">
+    {% for mtaani in mtaanis %}
+        <div class="card mtaanicards mb-3">
+            <img class="card-img-top" src="{{mtaani.mtaani_image.url}}" alt="Card image cap">
+            <div class="card-body">
+                <h5 class="card-title nameofmtaani">{{mtaani.mtaani_name}}</h5>
+                <p class="card-text descrofmtaani">{{mtaani.mtaani_description}}</p>
+            </div>
+        </div>
+    {% endfor %}
+</section>
+
 {% endblock %}
