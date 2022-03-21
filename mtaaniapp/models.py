@@ -10,6 +10,31 @@ class Neighbourhood(models.Model):
     def __str__(self):
         return self.mtaani_name
 
+    def save_mtaani(self):
+        """
+        Save mtaani objects
+        """
+        self.save()
+
+    def delete_mtaani(self):
+        """
+        Delete mtaani objects
+        """
+        self.delete()
+
+    def update_mtaani(self):
+        """
+        Update mtaani objects
+        """
+        self.update()
+
+    @classmethod
+    def find_mtaani(self, cls):
+        """
+        Find mtaani by id
+        """
+        self.find(cls.id)
+
 class Profile(models.Model):
     user = models.OneToOneField(User, null=True, on_delete=models.CASCADE)
     neighbourhood = models.ForeignKey(Neighbourhood, null=True, on_delete=models.CASCADE)
@@ -35,6 +60,31 @@ class Business(models.Model):
 
     def __str__(self):
         return self.business_name
+
+    def save_business(self):
+        """
+        Save business objects
+        """
+        self.save()
+
+    def delete_business(self):
+        """
+        Delete business objects
+        """
+        self.delete()
+
+    def update_business(self):
+        """
+        Update business objects
+        """
+        self.update()
+
+    @classmethod
+    def find_business(self, cls):
+        """
+        Find business by id
+        """
+        self.find(cls.id)
 
 class Contact(models.Model):
     police_contact = models.CharField(null=True, max_length=30)
