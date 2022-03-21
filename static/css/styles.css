@@ -81,6 +81,18 @@
   margin: 5%;
 }
 
+.carousel .carousel-item {
+  height: 92vh;
+}
+
+.carousel-item img {
+    position: absolute;
+    object-fit:cover;
+    top: 0;
+    left: 0;
+    min-height: 92vh;
+}
+
 @import url("https://fonts.googleapis.com/css2?family=Baloo+2&display=swap");
 /* This pen */
 
