@@ -123,11 +123,12 @@ USE_TZ = True
 STATIC_URL = 'static/'
 
 if not DEBUG:
-    ALLOWED_HOSTS = []
+    ALLOWED_HOSTS = ["mtaani.onrender.com"]
     STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
     STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 
 else:
+    ALLOWED_HOSTS = ['localhost', '127.0.0.1']
     STATICFILES_DIRS = [
         os.path.join(BASE_DIR, "static"),
     ]
