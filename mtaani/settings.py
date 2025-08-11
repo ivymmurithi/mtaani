@@ -28,6 +28,7 @@ SECRET_KEY = config('SECRET_KEY')
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = config('DEBUG', default=False, cast=bool)
 
+ALLOWED_HOSTS = ["mtaani.onrender.com"]
 
 # Application definition
 
@@ -125,11 +126,9 @@ STATIC_URL = '/static/'
 STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 
 if not DEBUG:
-    ALLOWED_HOSTS = ["mtaani.onrender.com"]
     STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 
 else:
-    ALLOWED_HOSTS = ['localhost', '127.0.0.1']
     STATICFILES_DIRS = [
         os.path.join(BASE_DIR, "static"),
     ]
