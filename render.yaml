@@ -1,0 +1,22 @@
+databases:
+  - name: mtaani
+    plan: free
+    databaseName: mtaani
+    user: mtaani
+
+services:
+  - type: web
+    plan: free
+    name: mtaani
+    runtime: python
+    buildCommand: './build.sh'
+    startCommand: 'python -m gunicorn mysite.asgi:application -k uvicorn.workers.UvicornWorker'
+    envVars:
+      - key: DATABASE_URL
+        fromDatabase:
+          name: mtaani
+          property: connectionString
+      - key: SECRET_KEY
+        generateValue: true
+      - key: WEB_CONCURRENCY
+        value: 4
